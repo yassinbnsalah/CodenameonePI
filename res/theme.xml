@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <image name="background.jpg"  />
+    <image name="background.png"  />
+    <image name="bla.jpg"  />
+    <image name="bridge.jpg"  />
+    <image name="calendar-background.jpg"  />
+    <image name="calendar-separator.png"  />
+    <image name="card-bottom.png"  />
+    <image name="card.png"  />
+    <image name="contact-a.png"  />
+    <image name="contact-b.png"  />
+    <image name="contact-c.png"  />
+    <image name="dark-rect.png"  />
+    <image name="griffith.jpg"  />
+    <image name="group-first.png"  />
+    <image name="group-last.png"  />
+    <image name="group-only.png"  />
+    <image name="group.png"  />
+    <image name="label_round-selected.png"  />
+    <image name="label_round.png"  />
+    <image name="learn-codename-one.jpg"  />
+    <image name="logo.png"  />
+    <image name="profile_image.png"  />
+    <image name="progress.png"  />
+    <image name="selection-in-sidemenu.png"  />
+    <image name="sidemenu-background.jpg"  />
+    <image name="skate-park.jpg"  />
+    <image name="slide1.png"  />
+    <image name="test.png"  />
+    <theme name="Theme">
+        <val key="@includeNativeBool" value="true" />
+    </theme>
+    <image name="toolbar-profile-pic.png"  />
+    <image name="walthru-radio-selected.png"  />
+    <image name="walthru-radio-unselected.png"  />
+    <image name="welcome-background.jpg"  />
+    <image name="welcome-image-mask.png"  />
+    <image name="welcome-separator.png"  />
+</resource>
