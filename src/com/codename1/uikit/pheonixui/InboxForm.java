@@ -108,6 +108,7 @@ public class InboxForm extends BaseForm {
             Button c1 = new Button(resourceObjectInstance.getImage("contact-a.png"));
             Button c2 = new Button(resourceObjectInstance.getImage("contact-b.png"));
             Button c3 = new Button(resourceObjectInstance.getImage("contact-c.png"));
+            // STYLE HERE 
             Button trans = new Button(" ");
             trans.setUIID("Container");
             c1.setUIID("Container");

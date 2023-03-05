@@ -18,36 +18,77 @@
  */
 package com.codename1.uikit.pheonixui;
 
+import com.codename1.ui.Button;
 import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
 import com.codename1.ui.Toolbar;
+import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.util.Resources;
 
 /**
  * A simple details form
  *
  * @author Shai Almog
  */
-public class DetailsForm extends com.codename1.ui.Form {
+public class DetailsForm extends BaseForm {
 
-    public DetailsForm() {
-        this(com.codename1.ui.util.Resources.getGlobalResources());
-    }
+    private Form current;
+
+    public DetailsForm(Resources res) {
+      
+        Toolbar tb = new Toolbar(true);
+        
+        setScrollableY(true);
+        getToolbar().setTitleComponent(
+                FlowLayout.encloseCenterMiddle(
+                        new Label("Client Details", "Title")
+                      
+                )
+        );
+        installSidemenu(res);
+       
+
+        current = this;
+ setToolbar(tb);
+        getTitleArea().setUIID("container");
     
-    public DetailsForm(com.codename1.ui.util.Resources resourceObjectInstance) {
-        setToolbar(new Toolbar(true));
-        initGuiBuilderComponents(resourceObjectInstance);
-        Form last =  Display.getInstance().getCurrent();
-        getToolbar().setBackCommand("", e -> last.show());
+        getContentPane().setScrollVisible(false);
+
+        // add form 
+        /*
+        TextField tf1 = new TextField("", "Nom");
+        TextField tf2 = new TextField("", "Num");
+        Button b = new Button("Add Persone");
+         
+        this.add(tf1);
+        this.add(tf2);
+        this.add(b);*/
     }
 
+    /* public DetailsForm(com.codename1.ui.util.Resources resourceObjectInstance) {
+       setScrollableY(true);
+        Toolbar tb = new Toolbar(true);
+        FontImage mat = FontImage.createMaterial(FontImage.MATERIAL_CLOSE, "SigninTitle", 3.5f);
+        getToolbar().addCommandToLeftBar("", mat, e -> new SplashForm().show());
+        current = this;
+        setToolbar(tb);
+
+        getTitleArea().setUIID("container");
+        setTitle("Client Details");
+        getContentPane().setScrollVisible(false);
+
+    }*/
 //-- DON'T EDIT BELOW THIS LINE!!!
-
-
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
         setLayout(new com.codename1.ui.layouts.FlowLayout());
         setTitle("DetailsForm");
         setName("DetailsForm");
+
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!

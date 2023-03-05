@@ -44,8 +44,8 @@ public class BaseForm extends Form {
         Image trendingImage = null;
         if(isCurrentTrending()) trendingImage = selection;
         
-        Image calendarImage = null;
-        if(isCurrentCalendar()) calendarImage = selection;
+        Image OrderImage = null;
+        if(isCurrentOrder()) OrderImage = selection;
         
         Image statsImage = null;
         if(isCurrentStats()) statsImage = selection;
@@ -53,8 +53,7 @@ public class BaseForm extends Form {
         Button inboxButton = new Button("Inbox", inboxImage);
         inboxButton.setUIID("SideCommand");
         inboxButton.getAllStyles().setPaddingBottom(0);
-        Container inbox = FlowLayout.encloseMiddle(inboxButton, 
-                new Label("18", "SideCommandNumber"));
+        Container inbox = FlowLayout.encloseMiddle(inboxButton);
         inbox.setLeadComponent(inboxButton);
         inbox.setUIID("SideCommand");
         inboxButton.addActionListener(e -> new InboxForm().show());
@@ -62,10 +61,11 @@ public class BaseForm extends Form {
         
        // getToolbar().addCommandToSideMenu("Stats", statsImage, e -> new StatsForm(res).show());
        // getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
-        getToolbar().addCommandToSideMenu("Map", null, e -> {});
-        getToolbar().addCommandToSideMenu("Trending", trendingImage, e -> new TrendingForm(res).show());
-        getToolbar().addCommandToSideMenu("Settings", null, e -> {});
-        
+        getToolbar().addCommandToSideMenu("Product Liste", null, e -> {});
+        getToolbar().addCommandToSideMenu("Profile", trendingImage, e -> new TrendingForm(res).show());
+        getToolbar().addCommandToSideMenu("Order Liste", OrderImage, e -> new OrderListe(res).show());
+         getToolbar().addCommandToSideMenu("Client Liste", trendingImage, e -> new ClientListe(res).show());
+             getToolbar().addCommandToSideMenu("subscription Liste", trendingImage, e -> new SubscriptionListe(res).show());
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
         getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
@@ -82,7 +82,7 @@ public class BaseForm extends Form {
         return false;
     }
 
-    protected boolean isCurrentCalendar() {
+    protected boolean isCurrentOrder() {
         return false;
     }
 
