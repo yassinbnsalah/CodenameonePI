@@ -38,22 +38,14 @@ public class SubscriptionListe  extends BaseForm{
         setToolbar(tb);
         getTitleArea().setUIID("container");
         getContentPane().setScrollVisible(false);
-        
-        
-         
-        
-        
-        
-        
         ArrayList<Subscription> list = ServiceSubscription.getInstance().afficherAllSubscription(); 
-        
         for (Subscription sub :  list){
             System.out.println("subs"+sub);
                Container c = new Container(BoxLayout.x());
         Container ca1 = new Container(BoxLayout.y());
         Button c1 = new Button(res.getImage("contact-a.png"));
-        Label l = new Label("Sub Reference: "+sub.getId());
-        Label l1 = new Label("yessinebensalah@gmail.com");
+        Label l = new Label("#"+sub.getReference());
+        Label l1 = new Label(sub.getDatesub());
         c.add(c1);
         ca1.add(l);
         ca1.add(l1);

@@ -18,6 +18,21 @@ public class User {
     private String Age;
     private String Email;
     private String Adresse;
+    private String Password;
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public User(String Email, String Password) {
+        this.Email = Email;
+        this.Password = Password;
+    }
+    
 
     public User(int id, String CIN, String Name, String Numero, String Age, String Email, String Adresse) {
         this.id = id;
@@ -36,6 +51,16 @@ public class User {
         this.Age = Age;
         this.Email = Email;
         this.Adresse = Adresse;
+    }
+
+    public User(String CIN, String Name, String Numero, String Age, String Email, String Adresse, String Password) {
+        this.CIN = CIN;
+        this.Name = Name;
+        this.Numero = Numero;
+        this.Age = Age;
+        this.Email = Email;
+        this.Adresse = Adresse;
+        this.Password = Password;
     }
 
     public int getId() {
@@ -96,7 +121,5 @@ public class User {
     public void setAdresse(String Adresse) {
         this.Adresse = Adresse;
     }
-    
-    
 
 }

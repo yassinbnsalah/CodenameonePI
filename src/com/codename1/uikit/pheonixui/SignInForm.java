@@ -18,9 +18,15 @@
  */
 package com.codename1.uikit.pheonixui;
 
+import com.codename1.components.InfiniteProgress;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.util.Resources;
 import com.codename1.uikit.pheonixui.InboxForm;
 import com.codename1.uikit.pheonixui.SplashForm;
+import com.mycompany.entities.User;
+import com.mycompany.services.ServiceUser;
 
 /**
  * GUI builder created Form
@@ -32,7 +38,7 @@ public class SignInForm extends com.codename1.ui.Form {
     public SignInForm() {
         this(com.codename1.ui.util.Resources.getGlobalResources());
     }
-    
+
     public SignInForm(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
         getTitleArea().setUIID("Container");
@@ -53,7 +59,6 @@ public class SignInForm extends com.codename1.ui.Form {
     private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_1 = new com.codename1.ui.Button();
 
-
 // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void guiBuilderBindComponentListeners() {
         EventCallbackClass callback = new EventCallbackClass();
@@ -61,7 +66,9 @@ public class SignInForm extends com.codename1.ui.Form {
     }
 
     class EventCallbackClass implements com.codename1.ui.events.ActionListener, com.codename1.ui.events.DataChangedListener {
+
         private com.codename1.ui.Component cmp;
+
         public EventCallbackClass(com.codename1.ui.Component cmp) {
             this.cmp = cmp;
         }
@@ -71,18 +78,39 @@ public class SignInForm extends com.codename1.ui.Form {
 
         public void actionPerformed(com.codename1.ui.events.ActionEvent ev) {
             com.codename1.ui.Component sourceComponent = ev.getComponent();
-            if(sourceComponent.getParent().getLeadParent() != null) {
+            if (sourceComponent.getParent().getLeadParent() != null) {
                 sourceComponent = sourceComponent.getParent().getLeadParent();
             }
 
-            if(sourceComponent == gui_Button_2) {
-                onButton_2ActionEvent(ev);
+            if (sourceComponent == gui_Button_2) {
+                System.out.println("login ici");
+                // onButton_2ActionEvent(ev);
+
+                try {
+                    if (gui_Text_Field_2.getText() == "" || gui_Text_Field_1.getText() == "") {
+                        Dialog.show("plz add ", "", "annuler", "ok");
+                    } else {
+                        InfiniteProgress ip = new InfiniteProgress();
+                        final Dialog iD = ip.showInfiniteBlocking();
+                        User user = new User(String.valueOf(gui_Text_Field_1.getText()), String.valueOf(gui_Text_Field_2.getText()));
+                        System.out.println("data is " + user.toString());
+                        ServiceUser.getInstance().loginAdmin(user);
+                        iD.dispose();
+                        refreshTheme();
+                        System.out.println("login with success");
+                   
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
             }
         }
 
         public void dataChanged(int type, int index) {
         }
     }
+
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
         guiBuilderBindComponentListeners();
         setLayout(new com.codename1.ui.layouts.BorderLayout());
@@ -94,12 +122,12 @@ public class SignInForm extends com.codename1.ui.Form {
         gui_Container_1.addComponent(gui_Label_1);
         gui_Container_1.addComponent(gui_Component_Group_1);
         gui_Component_Group_1.setName("Component_Group_1");
-        gui_Component_Group_1.addComponent(gui_Text_Field_2);
         gui_Component_Group_1.addComponent(gui_Text_Field_1);
-        gui_Text_Field_2.setText("TextField");
-        gui_Text_Field_2.setName("Text_Field_2");
-        gui_Text_Field_1.setText("TextField");
+        gui_Component_Group_1.addComponent(gui_Text_Field_2);
+        gui_Text_Field_1.setText("Email");
         gui_Text_Field_1.setName("Text_Field_1");
+        gui_Text_Field_2.setText("password");
+        gui_Text_Field_2.setName("Text_Field_2");
         gui_Container_1.addComponent(gui_Button_2);
         gui_Container_1.addComponent(gui_Button_3);
         gui_Label_1.setUIID("CenterLabel");

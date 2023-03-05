@@ -103,20 +103,21 @@ public class ServiceSubscription {
                      
                     List<Map<String, Object>> listOfMaps = (List<Map<String, Object>>) mapSubscription.get("root");
                     for (Map<String, Object> obj : listOfMaps) {
+                         if(obj.get("reference") != null ){
                         Subscription sub = new Subscription();
-                        User usersub = new User() ; 
-                        System.out.println("obj"+obj.get("reference").toString());
-                       
+                        
+                                              
                         float id = Float.parseFloat(obj.get("id").toString());
                         sub.setPaiementType(obj.get("paiementType").toString());
-                        if(obj.get("reference") != null ){
+                       
                             sub.setReference(obj.get("reference").toString());
-                        }
                         
+                        sub.setDatesub(obj.get("dateSub").toString());
+                      
                         sub.setId((int)id) ;
                         
                         result.add(sub);
-                             
+                        }    
                     }
 
                 } catch (Exception ex) {

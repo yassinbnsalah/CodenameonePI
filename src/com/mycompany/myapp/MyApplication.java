@@ -14,8 +14,10 @@ import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
 import com.codename1.uikit.pheonixui.AjoutSubscriptionForm;
+import com.codename1.uikit.pheonixui.AjouteUserForm;
 import com.codename1.uikit.pheonixui.BaseForm;
 import com.codename1.uikit.pheonixui.CalendarForm;
+import com.codename1.uikit.pheonixui.ClientListe;
 import com.codename1.uikit.pheonixui.DetailsForm;
 import com.codename1.uikit.pheonixui.InboxForm;
 import com.codename1.uikit.pheonixui.SignInForm;
@@ -61,7 +63,8 @@ public class MyApplication {
       /*  Form hi = new SignInForm();
         
         hi.show();*/
-      new AjoutSubscriptionForm(theme).show();
+      //new AjoutSubscriptionForm(theme).show();
+      new SignInForm(theme).show();
     }
 
     public void stop() {
