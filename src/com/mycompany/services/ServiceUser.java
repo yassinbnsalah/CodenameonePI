@@ -15,10 +15,11 @@ import com.mycompany.entities.Subscription;
 import com.mycompany.entities.User;
 import static com.mycompany.services.ServiceSubscription.instance;
 import com.mycompany.utils.Statics;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Arrays;
 /**
  *
  * @author yacin
@@ -42,13 +43,32 @@ public class ServiceUser {
     }
 
     public void loginAdmin(User user) {
-
+ JSONParser jsonp;
+                jsonp = new JSONParser();
         String url = Statics.BASE_URL + "user/signin"
                 + "?Email=" + user.getEmail()
                 + "&Password=" + user.getPassword();
         req.setUrl(url);
         req.addResponseListener((e) -> {
             String str = new String(req.getResponseData());
+//            User user = new User(req.getResponseData()) ; 
+        try{
+            System.out.println(jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray())).get("roles"));
+             List<Object> roles = Arrays.asList(jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray())).get("roles")) ; 
+             System.out.println("roles : "+roles.get(0).toString());
+             String subroles = roles.get(0).toString().substring(1,roles.get(0).toString().indexOf(","));
+             
+             if(subroles.equals("ROLE_ADMIN")){
+                 System.out.println("you are admin");
+             }else{
+                 System.out.println("you are not admin");
+             }
+             System.out.println(subroles);
+       //     List<String> roles =  Arrays.asList(jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray())).get("roles"));
+        }catch(Exception es){
+               es.printStackTrace();
+        }
+            
             System.out.println("data ==" + str);
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
