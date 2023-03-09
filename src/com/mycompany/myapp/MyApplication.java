@@ -64,7 +64,7 @@ public class MyApplication {
         
         hi.show();*/
       //new AjoutSubscriptionForm(theme).show();
-      new SignInForm(theme).show();
+     new SignInForm(theme).show();
     }
 
     public void stop() {

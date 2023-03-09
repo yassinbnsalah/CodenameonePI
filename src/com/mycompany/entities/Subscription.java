@@ -16,6 +16,15 @@ public class Subscription {
     private int id ; 
     private String datesub ; 
     private String type ; 
+    private String state ;
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
     private String paiementType ; 
     private int amount ; 
     private int idUser ; 

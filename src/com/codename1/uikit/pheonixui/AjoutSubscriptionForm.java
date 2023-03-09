@@ -33,7 +33,7 @@ public class AjoutSubscriptionForm extends com.codename1.ui.Form {
 
     Form current;
 
-    public AjoutSubscriptionForm(Resources res) {
+    public AjoutSubscriptionForm(Resources res , int id) {
         super("Add Sub To Client", BoxLayout.y());
         Toolbar tb = new Toolbar(true);
         current = this;
@@ -60,7 +60,7 @@ public class AjoutSubscriptionForm extends com.codename1.ui.Form {
 
         Button btnajouter = new Button("ajouter");
         addStringValue("", btnajouter);
-
+        System.out.println("ajoute de ID");
         btnajouter.addActionListener((ActionEvent e) -> {
             try {
                 if (dateS.getText() == ""
@@ -78,13 +78,13 @@ public class AjoutSubscriptionForm extends com.codename1.ui.Form {
                             datestring, String.valueOf(typeSubE.getSelectedIndex() + 1),
                             String.valueOf(paiementType.getText()),
                             Integer.valueOf(amount.getText()),
-                            1);
+                            id);
                     System.out.println("data is " + s);
-                    ServiceSubscription.getInstance().addSubscription(s);
+                    ServiceSubscription.getInstance().addSubscription(s,id);
                     iD.dispose();
                     refreshTheme();
                    
-                    DetailsForm f = new DetailsForm(res); 
+                    ClientDetails f = new ClientDetails(res,id); 
                     f.show(); 
                 }
             } catch (Exception ex) {

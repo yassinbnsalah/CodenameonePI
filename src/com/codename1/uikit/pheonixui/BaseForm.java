@@ -16,11 +16,12 @@
  * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
  * OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
  */
-
 package com.codename1.uikit.pheonixui;
 
+import com.codename1.io.Storage;
 import com.codename1.ui.Button;
 import com.codename1.ui.Container;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
@@ -35,21 +36,85 @@ import com.codename1.ui.util.Resources;
  * @author Shai Almog
  */
 public class BaseForm extends Form {
+
     public void installSidemenu(Resources res) {
         Image selection = res.getImage("selection-in-sidemenu.png");
-        
+
         Image inboxImage = null;
-        if(isCurrentInbox()) inboxImage = selection;
+        if (isCurrentInbox()) {
+            inboxImage = selection;
+        }
 
         Image trendingImage = null;
-        if(isCurrentTrending()) trendingImage = selection;
-        
+        if (isCurrentTrending()) {
+            trendingImage = selection;
+        }
+
         Image OrderImage = null;
-        if(isCurrentOrder()) OrderImage = selection;
-        
+        if (isCurrentOrder()) {
+            OrderImage = selection;
+        }
+
         Image statsImage = null;
-        if(isCurrentStats()) statsImage = selection;
+        if (isCurrentStats()) {
+            statsImage = selection;
+        }
+
+        Button inboxButton = new Button("Inbox", inboxImage);
+        inboxButton.setUIID("SideCommand");
+        inboxButton.getAllStyles().setPaddingBottom(0);
+        Container inbox = FlowLayout.encloseMiddle(inboxButton);
+        inbox.setLeadComponent(inboxButton);
+        inbox.setUIID("SideCommand");
+        inboxButton.addActionListener(e -> new InboxForm().show());
+     
+
         
+        getToolbar().addCommandToSideMenu("Profile", trendingImage, e -> new TrendingForm(res).show());
+        getToolbar().addCommandToSideMenu("Product Liste", null, e -> {});
+        getToolbar().addCommandToSideMenu("Order Liste", OrderImage, e -> new OrderListe(res).show());
+        getToolbar().addCommandToSideMenu("Client Liste", OrderImage, e -> new ClientListe(res).show());
+        getToolbar().addCommandToSideMenu("subscription Liste", trendingImage, e -> new SubscriptionListe(res).show());
+        // spacer
+        getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
+        getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
+        getToolbar().addComponentToSideMenu(new Label(SessionManager.getName(), "SideCommandNoPad"));
+        getToolbar().addComponentToSideMenu(new Label(SessionManager.getEmail(), "SideCommandSmall"));
+        
+        getToolbar().addMaterialCommandToSideMenu("Deconnexion", FontImage.MATERIAL_EXIT_TO_APP, e -> {
+         
+            SessionManager.pref.clearAll();
+            Storage.getInstance().clearStorage();
+            Storage.getInstance().clearCache();
+           // System.out.println(SessionManager.getName());
+            new SignInForm(res).show();
+        });
+        refreshTheme();
+    }
+
+    public void installSidemenuClient(Resources res) {
+        Image selection = res.getImage("selection-in-sidemenu.png");
+
+        Image inboxImage = null;
+        if (isCurrentInbox()) {
+            inboxImage = selection;
+        }
+
+        Image trendingImage = null;
+        if (isCurrentTrending()) {
+            trendingImage = selection;
+        }
+
+        Image OrderImage = null;
+        if (isCurrentOrder()) {
+            OrderImage = selection;
+        }
+
+        Image statsImage = null;
+        if (isCurrentStats()) {
+            statsImage = selection;
+        }
+
         Button inboxButton = new Button("Inbox", inboxImage);
         inboxButton.setUIID("SideCommand");
         inboxButton.getAllStyles().setPaddingBottom(0);
@@ -58,26 +123,33 @@ public class BaseForm extends Form {
         inbox.setUIID("SideCommand");
         inboxButton.addActionListener(e -> new InboxForm().show());
         getToolbar().addComponentToSideMenu(inbox);
-        
-       // getToolbar().addCommandToSideMenu("Stats", statsImage, e -> new StatsForm(res).show());
-       // getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
-        getToolbar().addCommandToSideMenu("Product Liste", null, e -> {});
+
+        // getToolbar().addCommandToSideMenu("Stats", statsImage, e -> new StatsForm(res).show());
+        // getToolbar().addCommandToSideMenu("Calendar", calendarImage, e -> new CalendarForm(res).show());
         getToolbar().addCommandToSideMenu("Profile", trendingImage, e -> new TrendingForm(res).show());
         getToolbar().addCommandToSideMenu("Order Liste", OrderImage, e -> new OrderListe(res).show());
-         getToolbar().addCommandToSideMenu("Client Liste", trendingImage, e -> new ClientListe(res).show());
-             getToolbar().addCommandToSideMenu("subscription Liste", trendingImage, e -> new SubscriptionListe(res).show());
+      
+        getToolbar().addCommandToSideMenu("subscription Liste", trendingImage, e -> new SubscriptionListe(res).show());
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
         getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
-        getToolbar().addComponentToSideMenu(new Label("Detra Mcmunn", "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label("Long Beach, CA", "SideCommandSmall"));
+        getToolbar().addComponentToSideMenu(new Label(SessionManager.getName(), "SideCommandNoPad"));
+        getToolbar().addComponentToSideMenu(new Label(SessionManager.getEmail(), "SideCommandSmall"));
+         getToolbar().addMaterialCommandToSideMenu("Deconnexion", FontImage.MATERIAL_EXIT_TO_APP, e -> {
+         
+            SessionManager.pref.clearAll();
+            Storage.getInstance().clearStorage();
+            Storage.getInstance().clearCache();
+           // System.out.println(SessionManager.getName());
+            new SignInForm(res).show();
+        });
+        refreshTheme();
     }
 
-        
     protected boolean isCurrentInbox() {
         return false;
     }
-    
+
     protected boolean isCurrentTrending() {
         return false;
     }

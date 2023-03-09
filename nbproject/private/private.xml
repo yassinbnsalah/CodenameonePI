@@ -13,9 +13,20 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/services/ServiceUser.java</file>
             <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/myapp/MyApplication.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/AjouteUserForm.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/SubscriptionListe.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/SessionManager.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/entities/User.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/AjoutSubscriptionForm.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/SignInForm.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/BaseForm.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/entities/Subscription.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/services/ServiceUser.java</file>
             <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/mycompany/services/ServiceSubscription.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/SubDetails.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/ClientListe.java</file>
+            <file>file:/D:/yessine/esprit/3A47/Codenameone/TestingPI/src/com/codename1/uikit/pheonixui/TrendingForm.java</file>
         </group>
     </open-files>
 </project-private>

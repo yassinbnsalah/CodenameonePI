@@ -19,7 +19,7 @@ public class User {
     private String Email;
     private String Adresse;
     private String Password;
-
+    
     public String getPassword() {
         return Password;
     }

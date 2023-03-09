@@ -55,7 +55,7 @@ public class SignInForm extends com.codename1.ui.Form {
     private com.codename1.ui.Label gui_Label_1 = new com.codename1.ui.Label();
     private com.codename1.ui.ComponentGroup gui_Component_Group_1 = new com.codename1.ui.ComponentGroup();
     private com.codename1.ui.TextField gui_Text_Field_2 = new com.codename1.ui.TextField();
-    private TextField gui_Text_Field_1 = new TextField("","email");
+    private TextField gui_Text_Field_1 = new TextField("", "email");
     private com.codename1.ui.Button gui_Button_2 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_3 = new com.codename1.ui.Button();
     private com.codename1.ui.Button gui_Button_1 = new com.codename1.ui.Button();
@@ -98,8 +98,13 @@ public class SignInForm extends com.codename1.ui.Form {
                         ServiceUser.getInstance().loginAdmin(user);
                         iD.dispose();
                         refreshTheme();
-                        System.out.println("login with success");
-                   
+                        if (SessionManager.getRole().equals("ROLE_ADMIN")) {
+                         
+                            new ClientListe(com.codename1.ui.util.Resources.getGlobalResources()).show();
+                        } else  {
+                            new SubscriptionListe(com.codename1.ui.util.Resources.getGlobalResources()).show() ; 
+                           
+                        }
                     }
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -125,8 +130,8 @@ public class SignInForm extends com.codename1.ui.Form {
         gui_Component_Group_1.setName("Component_Group_1");
         gui_Component_Group_1.addComponent(gui_Text_Field_1);
         gui_Component_Group_1.addComponent(gui_Text_Field_2);
-      //  gui_Text_Field_1.setText("Email");
-       // gui_Text_Field_1.setName("Text_Field_1");
+        //  gui_Text_Field_1.setText("Email");
+        // gui_Text_Field_1.setName("Text_Field_1");
         gui_Text_Field_2.setText("password");
         gui_Text_Field_2.setName("Text_Field_2");
         gui_Container_1.addComponent(gui_Button_2);
